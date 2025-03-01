@@ -1,10 +1,10 @@
-BasedOnStyle: Google   # Start with Google style as a base, and modify it >
+BasedOnStyle: Google
 BraceWrapping:
   AfterControlStatement: false  # Opening braces on the same line as the c>
   AfterFunction: false
   AfterEnum: false
   AfterStruct: false
   AfterClass: false
-IndentWidth: 4            # Indentation width
-TabWidth: 4               # Set tab width to match indentation
-UseTab: Never             # Use spaces instead of tabs
+IndentWidth: 4 
+TabWidth: 4
+UseTab: Never 
