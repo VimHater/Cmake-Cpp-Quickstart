@@ -13,6 +13,8 @@ project_root
     └── main.cpp
 
 ```
+# Installation
+run `setup-unix.sh` or `setup-windows.bat`
 # Build
 ```
 cd build
