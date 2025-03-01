@@ -1,7 +1,7 @@
 ## 🚀 Overview
 Cmake project quickstart with vcpkg
 
-### Project Structure
+# Project Structure
 ```
 project_root
 ├── assets
@@ -13,7 +13,7 @@ project_root
     └── main.cpp
 
 ```
-## Build
+# Build
 ```
 cd build
 cmake ..
