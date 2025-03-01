@@ -4,6 +4,5 @@ assets/*
 include/*
 
 !build/.gitkeep
-!vcpkg/.gitkeep
 !assets/.gitkeep
 !include/.gitkeep
