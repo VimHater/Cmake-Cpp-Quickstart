@@ -1,7 +1,7 @@
-## 🚀 Overview
+# 🚀 Overview
 Cmake project quickstart with vcpkg
 
-# Project Structure
+### Project Structure
 ```
 project_root
 ├── assets
@@ -13,22 +13,23 @@ project_root
     └── main.cpp
 
 ```
-# Installation
+### Installation
 run `setup-unix.sh` or `setup-windows.bat`
-# Build
+
+### Build
 ```
 cd build
 cmake ..
 cmake --build .
 ```
 
-# Specify build configuration
+### Specify build configuration
 ```
 cmake --build . --config Release
 cmake --build . --config Debug
 ```
 
-# Parallel builds
+### Parallel builds
 ```
 cmake --build . -j 4    # Build with 4 cores
 cmake --build . --parallel 4
