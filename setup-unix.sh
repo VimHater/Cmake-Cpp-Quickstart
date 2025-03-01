@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Function to check if a package is installed
 check_package() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
         brew list "$1" &>/dev/null
@@ -15,9 +14,7 @@ check_package() {
     fi
 }
 
-# Detect OS
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    # macOS
     if ! command -v cmake &>/dev/null; then
         echo "CMake not found. Installing..."
         if command -v brew &>/dev/null; then
@@ -29,11 +26,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         fi
     fi
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    # Linux
     PACKAGES="cmake curl zip unzip tar"
 
     if command -v apt-get &>/dev/null; then
-        # For Debian/Ubuntu
         MISSING_PACKAGES=""
         for pkg in $PACKAGES; do
             if ! check_package "$pkg"; then
@@ -45,7 +40,6 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
             sudo apt-get install -y $MISSING_PACKAGES
         fi
     elif command -v dnf &>/dev/null; then
-        # For Fedora
         MISSING_PACKAGES=""
         for pkg in $PACKAGES; do
             if ! check_package "$pkg"; then
@@ -57,7 +51,6 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
             sudo dnf install -y $MISSING_PACKAGES
         fi
     elif command -v yum &>/dev/null; then
-        # For CentOS/RHEL
         MISSING_PACKAGES=""
         for pkg in $PACKAGES; do
             if ! check_package "$pkg"; then
@@ -69,7 +62,6 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
             sudo yum install -y $MISSING_PACKAGES
         fi
     elif command -v pacman &>/dev/null; then
-        # For Arch Linux
         echo "Installing packages with --needed flag"
         sudo pacman -S --needed --noconfirm cmake curl zip unzip tar
     else
@@ -83,7 +75,6 @@ fi
 
 echo "CMake is ready."
 
-# Check if vcpkg is already installed
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 VCPKG_DIR="${SCRIPT_DIR}/vcpkg"
 
@@ -93,10 +84,8 @@ if [ ! -d "${VCPKG_DIR}" ]; then
     git clone --depth=1 https://github.com/Microsoft/vcpkg.git "${VCPKG_DIR}"
     cd "${VCPKG_DIR}"
 
-    # Run bootstrap script
     ./bootstrap-vcpkg.sh
 
-    # Optional: Remove git files if you want
     rm -rf .git .gitignore .gitmodules .gitattributes .github
 
     echo "vcpkg installation completed!"
